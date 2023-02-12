@@ -30,7 +30,6 @@ ProductRoute.post("/", async (req, res) => {
 
 ProductRoute.patch("/:ID", async (req, res) => {
   const { ID } = req.params;
- y;
 
   ProductModel.findByIdAndUpdate(
     ID,
