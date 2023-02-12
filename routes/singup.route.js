@@ -5,19 +5,9 @@ const { UserModel } = require("../models/user.model");
 const { SignupMiddleware } = require("../middlewares/signupmiddleWare");
 
 SignupRoute.post("/", SignupMiddleware, async (req, res) => {
-  const { Email, Password ,FullName} = req.body;
-  console.log("Check",req.body)
+  const { Email, Password } = req.body;
   const hashedPass = await bcrypt.hash(Password, 6);
-  var Type;
-  
-if(Email.includes("@masaischool.com")){
-  Type="Admin"
-}else{
-  Type="User"
-}
-
-
-  const newUser = new UserModel({ Email, Password: hashedPass,FullName,Type});
+  const newUser = new UserModel({ Email, Password: hashedPass,Type:"USER"});
   await newUser.save();
   res.send({ msg: "SignUp successfull" });
 });
