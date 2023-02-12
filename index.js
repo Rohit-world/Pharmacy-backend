@@ -1,5 +1,7 @@
 const express = require("express");
-
+const { LoginRoute } = require("./routes/login.route");
+const { SignupRoute } = require("./routes/singup.route");
+const { ProductRoute } = require("./routes/product.route");
 
 const app = express();
 const port = 3002;
@@ -13,7 +15,9 @@ app.use(
 );
 
 app.use(express.json());
-
+app.use("/login", LoginRoute);
+app.use("/signup", SignupRoute);
+app.use("/products", ProductRoute);
 app.get("/", (req, res) => res.send("Home Route"));
 
 app.listen(port, async () => {
