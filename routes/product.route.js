@@ -8,6 +8,20 @@ ProductRoute.get("/", async (req, res) => {
   res.send(AllUsers);
 });
 
+ProductRoute.get("/:ID", async (req, res) => {
+  const { ID } = req.params;
+ try{
+const product= await ProductModel.findById(ID)
+if(product){
+  res.send(product)
+}
+
+ }catch(err){
+res.send({"msg":"Cannot Find the product by this ID"})
+ }
+
+});
+
 ProductRoute.post("/", async (req, res) => {
   const NewProduct = new ProductModel(req.body);
   await NewProduct.save();
