@@ -4,7 +4,7 @@ const { SignupRoute } = require("./routes/singup.route");
 const { ProductRoute } = require("./routes/product.route");
 
 const app = express();
-const port = 3002;
+const port = 8080;
 const cors = require("cors");
 const { dbconnection } = require("./config/db");
 
